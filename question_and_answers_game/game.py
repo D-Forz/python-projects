@@ -6,10 +6,10 @@ import os
 
 correct_answer = None
 received_question = None
-scores = ["10", "20", "30", "40", "50"]
+SCORES = ["10", "20", "30", "40", "50"]
 player = None
-current_path = os.path.dirname(__file__)
-questions_path = os.path.join(current_path, 'questions.csv')
+CURRENT_PATH = os.path.dirname(__file__)
+QUESTIONS_PATH = os.path.join(CURRENT_PATH, 'questions.csv')
 
 def main():
     introduction()
@@ -25,7 +25,7 @@ class Game:
     def intro_question(self):
         os.system("clear")
         print("")
-        points = scores[self.difficulty]
+        points = SCORES[self.difficulty]
         print("-" * 50)
         print(f"We are in the round {self.difficulty + 1} for {points} points.".center(50))
         print("If you wish to leave, you can answer 'exit'.".center(50))
@@ -35,7 +35,7 @@ class Game:
     def ask_question(self):
         global received_question, correct_answer
 
-        questions = open(questions_path).read().splitlines()
+        questions = open(QUESTIONS_PATH).read().splitlines()
         if self.difficulty == 0:
             randomquestion = random.choice(questions[:5])
         elif self.difficulty == 1:
@@ -69,7 +69,7 @@ class Game:
             if self.difficulty == 0:
                 print (f"\n You have chosen to end the game, {player}. You have won 0 points. See you in the future!")
             else:
-                print (f"\n You have chosen to end the game, {player}. You have won {scores[self.difficulty - 1]} points. Congratulations!")
+                print (f"\n You have chosen to end the game, {player}. You have won {SCORES[self.difficulty - 1]} points. Congratulations!")
                 save_score(self.difficulty)
             sleep(3)
             os.system("clear")
@@ -92,7 +92,7 @@ class Game:
                 else:
                     sleep(2)
                     print("\n")
-                    print(f"You have guessed right, {player}! Now you have {scores[self.difficulty]} points.".center(50))
+                    print(f"You have guessed right, {player}! Now you have {SCORES[self.difficulty]} points.".center(50))
                     print("\n\n")
                     print(f"Let's go to the round #{self.difficulty + 2}!".center(50))
                     sleep(3)
@@ -105,7 +105,7 @@ class Game:
                 sleep(2)
                 print(f"\n Ops. The answer you have chosen is incorrect.\n\n The correct answer was: {correct_answer}.")
                 sleep(3)
-                print(f"\n your total score was {scores[self.difficulty - 1]} points.")
+                print(f"\n your total score was {SCORES[self.difficulty - 1]} points.")
                 print("\n\n Thanks for playing!")
                 save_score(self.difficulty)
 
@@ -120,12 +120,12 @@ class Game:
                     menu()
 
 def save_score(score):
-    file = open(os.path.join(current_path, "scores.txt"), "a")
-    file.write(f"User: {player}.\t\t Score: {scores[score - 1]}.\n")
+    file = open(os.path.join(CURRENT_PATH, "scores.txt"), "a")
+    file.write(f"User: {player}.\t\t Score: {SCORES[score - 1]}.\n")
     file.close()
 
 def load_scores():
-    file = open(os.path.join(current_path, "scores.txt"))
+    file = open(os.path.join(CURRENT_PATH, "scores.txt"))
     sleep(2)
     print("")
     print (file.read())
