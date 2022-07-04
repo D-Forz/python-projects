@@ -93,7 +93,7 @@ class Game:
                     sleep(2)
                     print("\n")
                     print(f"You have guessed right, {player}! Now you have {SCORES[self.difficulty]} points.".center(50))
-                    print("\n\n")
+                    print("\n")
                     print(f"Let's go to the round #{self.difficulty + 2}!".center(50))
                     sleep(3)
                     self.raise_difficulty()
@@ -120,16 +120,15 @@ class Game:
                     menu()
 
 def save_score(score):
-    file = open(os.path.join(CURRENT_PATH, "scores.txt"), "a")
-    file.write(f"User: {player}.\t\t Score: {SCORES[score - 1]}.\n")
-    file.close()
+    with open(os.path.join(CURRENT_PATH, "scores.txt"), "a", encoding="utf-8") as file:
+        file.write(f"User: {player}.\t\t Score: {SCORES[score - 1]}.\n")
 
 def load_scores():
-    file = open(os.path.join(CURRENT_PATH, "scores.txt"))
-    sleep(2)
-    print("")
-    print (file.read())
-    file.close()
+    with open(os.path.join(CURRENT_PATH, "scores.txt"), encoding="utf-8") as file:
+        sleep(2)
+        print("")
+        print (file.read())
+    
 
 def introduction():
     print("\n\nLadies and Gentlemen!\n")
