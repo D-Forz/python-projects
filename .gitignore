@@ -163,3 +163,7 @@ cython_debug/
 
 #Selenium
 *.exe
+
+#Others
+food_delivery
+django_projects
