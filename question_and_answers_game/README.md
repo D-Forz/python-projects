@@ -1,4 +1,4 @@
-#Question and Answers Game
+# Question and Answers Game
 Question and answers game is a simulation about the show "Who wants to be millonaire" without jokers. Is a console game in which you can increase the difficulty as you progress, save and display a table of results.
 
 ## Screenshots
