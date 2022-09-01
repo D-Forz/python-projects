@@ -7,6 +7,8 @@ app.secret_key = 'development_key'
 
 # debug=True for development in console
 # $env:FLASK_ENV = "development"
+# $env:FLASK_APP = "app.py"
+# $env:FLASK_DEBUG = "1" - latest version of flask
 
 @app.route('/')
 def hello_world():
